@@ -7,10 +7,10 @@ def get_statistic(items, get_description):
     for news in items:
         words = list(filter(lambda x: len(x) > 6 and not isinstance(x, int), get_description(news).split()))
         for word in words:
-            if word not in stat_dict.keys():
-                stat_dict[word] = 1
+            if word.lower() not in stat_dict.keys():
+                stat_dict[word.lower()] = 1
             else:
-                stat_dict[word] += 1
+                stat_dict[word.lower()] += 1
 
     sorted_stat = sorted(stat_dict, reverse=True, key=stat_dict.get)
     return sorted_stat[:10]
